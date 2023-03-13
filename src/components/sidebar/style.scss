@@ -1,0 +1,39 @@
+.sidebar {
+    width: 40vw;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .list {
+        list-style: none;
+    }
+
+    .sidebar-content {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        width: 70%;
+        min-width: 150px;
+        margin-top: 100px;
+        padding: 10px 0px 10px 20px;
+
+        p {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        ul {
+            margin-top: 0px;
+            padding-left: 2px;
+
+            li {
+                margin: 6px 0px;
+            }
+        }
+    }
+}
+
+@media screen and ( max-width: 768px ) {
+    .sidebar {
+        display: none;
+    }
+}
