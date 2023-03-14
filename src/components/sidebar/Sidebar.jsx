@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './style.scss'
 
 const Sidebar = () => {
+  const [filters, setFilters] = useState({
+    color: [],
+    gender: [],
+    price: [],
+    type: []
+  });
+
+  const handleFilter = (e ,action) => {
+    console.log(e.target.checked)
+    console.log(action);
+  }
+
   return (
     <div className='sidebar'>
       <div className='sidebar-content'>
       <p>Color</p>
         <ul className='color'>
           <li className='list'>
-            <input type='checkbox'/> 
+            <input type='checkbox' onClick={e => handleFilter(e,{type : 'color', color : 'red'})}/> 
             <span>Red</span>
           </li>
 

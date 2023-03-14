@@ -27,7 +27,14 @@ function App() {
           <Route
             exact
             path="/cart"
-            element={<Cart addToCart={addToCart} noOfProducts={noOfProducts} />}
+            element={
+              <Cart
+                addToCart={addToCart}
+                setAddTOCart={setAddTOCart}
+                noOfProducts={noOfProducts}
+                setNoOfProducts={setNoOfProducts}
+              />
+            }
           />
         </Routes>
       </Router>

@@ -24,12 +24,12 @@ const Home = (props) => {
       }, 300);
   }, []);
 
-
   return (
     <div className='home'>
       <Navbar 
         addToCart={addToCart}
         noOfProducts={noOfProducts}
+        setAddTOCart={setAddTOCart}
       />
       <div className='home__container'>
         <Sidebar />

@@ -33,7 +33,7 @@ const Card = (props) => {
       setAddTOCart(addToCart);
       setNoOfProducts(addToCart.length);
       setQuantity(0);
-      toast.success(product.name+" added to cart");
+      toast(product.name+" added to cart");
   };
 
   return (
