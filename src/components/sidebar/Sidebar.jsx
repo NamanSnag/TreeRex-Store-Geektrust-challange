@@ -10,8 +10,9 @@ const Sidebar = (props) => {
     cloth: [],
   });
 
-  const {setData, originalData } = props;
+  const {setData, originalData, filterClass } = props;
 
+  // filtering product list as per checked filters
   const handleFilter = (e, action) => {
     if (e.target.checked) {
       switch (action.type) {
@@ -129,8 +130,8 @@ const Sidebar = (props) => {
   }, [filters]);
 
   return (
-    <div className="sidebar">
-      <div className="sidebar-content">
+    <div className={filterClass}>
+      <div className={`sidebar-content ${`sidebar-${filterClass}`}`}>
         <p>Color</p>
         <ul className="color">
           <li className="list">

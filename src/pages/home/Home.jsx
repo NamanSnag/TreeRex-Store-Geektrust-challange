@@ -40,6 +40,7 @@ const Home = (props) => {
         <Sidebar
           setData={setData}
           originalData={originalData}
+          filterClass={'sidebar'}
         />
         <Products 
           addToCart={addToCart}
@@ -49,6 +50,8 @@ const Home = (props) => {
           setNoOfProducts={setNoOfProducts}
           filterProducts={filterProducts}
           setFilterProducts={setFilterProducts}
+          setData={setData}
+          originalData={originalData}
         />
       </div>
     </div>

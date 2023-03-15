@@ -11,9 +11,16 @@ const Card = (props) => {
   const [quantity, setQuantity] = useState(0);
   const { product, addToCart, setAddTOCart, setNoOfProducts } = props;
 
-  // quantity
+  //handling quantity changes
   const handleQuantity = (type) => {
+    let actualQ = product.quantity;
+    let productName = product.name;
+
     if (type === "plus") {
+      if(quantity >= actualQ){
+        toast.error(`${productName} avilable ${actualQ} only`);
+        return
+      }
       setQuantity(quantity + 1);
     } else if (type === "minus") {
       if (quantity !== 0) {
@@ -56,9 +63,9 @@ const Card = (props) => {
           </button>
         ) : (
           <div className="quantity">
-            <AiOutlinePlusCircle onClick={(e) => handleQuantity("plus")} />
+            <AiOutlinePlusCircle onClick={() => handleQuantity("plus")} />
             <div>{quantity}</div>
-            <AiOutlineMinusCircle onClick={(e) => handleQuantity("minus")} />
+            <AiOutlineMinusCircle onClick={() => handleQuantity("minus")} />
             <BiCartAdd onClick={handleAddToCart}/>
           </div>
         )}

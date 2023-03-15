@@ -35,7 +35,7 @@ const Cart = (props) => {
     if (type === "plus") {
       if (newCart[index].quantity < actualQ)
         newCart[index].quantity = quantity + 1;
-      else toast.warn(`${productName} avilable ${actualQ} only`);
+      else toast.error(`${productName} avilable ${actualQ} only`);
     } else if (type === "minus") {
       if (newCart[index].quantity > 0) newCart[index].quantity = quantity - 1;
     }

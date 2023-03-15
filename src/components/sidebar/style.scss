@@ -9,6 +9,10 @@
         list-style: none;
     }
 
+    .sidebar-filterClass {
+        display: none;
+    }
+
     .sidebar-content {
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
         width: 70%;
@@ -35,5 +39,20 @@
 @media screen and ( max-width: 768px ) {
     .sidebar {
         display: none;
+    }
+
+    .filterClass {
+        position: relative;
+
+        .sidebar-filterClass {
+            position: absolute;
+            background-color: rgba(240, 248, 255, 0.493);
+            padding: 0px 20px;
+            width: 200px;
+            top: 50px;
+            left:-120px;
+            z-index: 2;
+            backdrop-filter: blur(14px);
+        }
     }
 }

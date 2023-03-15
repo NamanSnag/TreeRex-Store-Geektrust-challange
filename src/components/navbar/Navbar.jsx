@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
@@ -6,7 +6,7 @@ import'./style.scss';
 
 const Navbar = (props) => {
 
-  const { addToCart, noOfProducts } = props;
+  const { noOfProducts } = props;
 
 
   return (
