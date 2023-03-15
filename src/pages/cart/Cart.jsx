@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
 
 // components
 import { Navbar } from "../../components";
 
 import "./style.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = (props) => {
   const { addToCart, noOfProducts, setAddTOCart, setNoOfProducts } = props;
@@ -12,16 +15,32 @@ const Cart = (props) => {
     addToCart.splice(index, 1);
     setAddTOCart(addToCart);
     setNoOfProducts(addToCart.length);
+    toast.success("Product Deleted Successfully");
   };
 
   const totalPrice = () => {
     let total = 0;
     addToCart.map((element) => {
-      total = total + element.quantity * element.product.price;
+      return (total = total + element.quantity * element.product.price);
     });
     return total;
   };
+
   const total = totalPrice();
+
+  const handleQuantityChange = (type, index, quantity) => {
+    let newCart = [...addToCart];
+    let actualQ = newCart[index].product.quantity;
+    let productName = newCart[index].product.name;
+    if (type === "plus") {
+      if (newCart[index].quantity < actualQ)
+        newCart[index].quantity = quantity + 1;
+      else toast.warn(`${productName} avilable ${actualQ} only`);
+    } else if (type === "minus") {
+      if (newCart[index].quantity > 0) newCart[index].quantity = quantity - 1;
+    }
+    setAddTOCart(newCart);
+  };
 
   return (
     <div className="cart">
@@ -47,7 +66,25 @@ const Cart = (props) => {
                     </p>
                   </div>
                   <div className="cart__productAA">
-                    <span>Qty: {product.quantity}</span>
+                    <div className="cart__quantity">
+                      <AiOutlineMinusSquare
+                        className="quantityBtn"
+                        onClick={() => {
+                          handleQuantityChange(
+                            "minus",
+                            index,
+                            product.quantity
+                          );
+                        }}
+                      />
+                      <button className="span">Qty : {product.quantity}</button>
+                      <AiOutlinePlusSquare
+                        className="quantityBtn"
+                        onClick={() => {
+                          handleQuantityChange("plus", index, product.quantity);
+                        }}
+                      />
+                    </div>
                     <button
                       className="cart__deleteBtn"
                       onClick={(e) => handelDeleteProduct(index)}
@@ -67,6 +104,7 @@ const Cart = (props) => {
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

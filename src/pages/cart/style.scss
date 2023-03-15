@@ -21,12 +21,14 @@
         margin-left: 120px;
 
         img {
-            height: 70px;
+            height: 62px;
+            width: 62px;
+            padding: 4px;
             border: 1px solid rgb(180, 178, 178);
         }
 
         .cart__productDetail {
-            width: 120px;
+            width: 180px;
 
             h4 {
                 margin: 4px;
@@ -43,16 +45,44 @@
 
         .cart__productAA {
             padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .cart__quantity {
+                display: flex;
+                align-items: center;
+                background-color: rgb(231, 228, 228);
+                border: 1px solid black;
+
+                .span {
+                    padding: 3px 8px 5px 8px;
+                    font-size: 0.9rem;
+                    border: none;
+                }
+    
+                .quantityBtn {
+                    font-size: 26px;
+                    color: gray;
+                }
+            }
+
+            .cart__deleteBtn {
+                background-color: transparent;
+                border-radius: 4px;
+                padding: 4px 8px;
+                
+            }    
         }
     }
 
     .cart__totalAmount {
         display: flex;
-        margin-top: 40px;
+        margin-top: 20px;
         
         h3 {
             border-top: 2px solid rgb(151, 151, 151);
-            padding: 20px 90px ;
+            padding: 20px 126px ;
             margin-left: 120px;
         }
     }

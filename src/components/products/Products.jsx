@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { MdOutlineSearch } from "react-icons/md";
 import { FiFilter } from "react-icons/fi";
 
@@ -7,12 +7,11 @@ import Card from "../product_card/Card";
 import "./style.scss";
 
 const Products = (props) => {
-  const [search, setSearch] = useState("");
-
-  const { addToCart, setAddTOCart, data, loading, setNoOfProducts } = props;
+  
+  const { addToCart, setAddTOCart, data, loading, setNoOfProducts, filterProducts, setFilterProducts } = props;
 
   const filterProduct = data.filter((product) => {
-    return product.name.toLowerCase().includes(search.toLowerCase());
+    return product.name.toLowerCase().includes(filterProducts.toLowerCase());
   });
 
 
@@ -23,7 +22,7 @@ const Products = (props) => {
           type="search"
           placeholder="Search for produts..."
           className="search_input"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setFilterProducts(e.target.value)}
         />
         <button className="btn-search">
           <MdOutlineSearch />

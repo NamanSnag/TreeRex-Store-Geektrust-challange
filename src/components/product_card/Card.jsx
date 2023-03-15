@@ -33,7 +33,7 @@ const Card = (props) => {
       setAddTOCart(addToCart);
       setNoOfProducts(addToCart.length);
       setQuantity(0);
-      toast(product.name+" added to cart");
+      toast.success(product.name+" added to cart");
   };
 
   return (
@@ -62,8 +62,8 @@ const Card = (props) => {
             <BiCartAdd onClick={handleAddToCart}/>
           </div>
         )}
+        <ToastContainer/>
       </div>
-      <ToastContainer/>
     </div>
   );
 };

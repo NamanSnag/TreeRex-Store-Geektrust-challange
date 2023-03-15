@@ -7,6 +7,8 @@ import './style.scss'
 
 const Home = (props) => {
   const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
+  const [filterProducts, setFilterProducts ] = useState("");
   const [loading, setLoading] = useState(false);
 
   const { addToCart, setAddTOCart, noOfProducts, setNoOfProducts } = props;
@@ -17,7 +19,10 @@ const Home = (props) => {
       "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
     )
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data)
+        setOriginalData(data);
+      })
       .catch((err) => console.error(err));
       setTimeout(() => {
         setLoading(false);
@@ -32,13 +37,18 @@ const Home = (props) => {
         setAddTOCart={setAddTOCart}
       />
       <div className='home__container'>
-        <Sidebar />
+        <Sidebar
+          setData={setData}
+          originalData={originalData}
+        />
         <Products 
           addToCart={addToCart}
           setAddTOCart={setAddTOCart}
           data={data}
           loading={loading}
           setNoOfProducts={setNoOfProducts}
+          filterProducts={filterProducts}
+          setFilterProducts={setFilterProducts}
         />
       </div>
     </div>
